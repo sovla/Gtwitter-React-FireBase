@@ -1,21 +1,19 @@
 import { dbService } from "fbase";
 import { useState, useEffect } from "react";
+import Gweet from "./Gweet";
 
 const Home = ({ userObj }) => {
   const [gweet, setGweet] = useState("");
   const [gweets, setGweets] = useState([]);
-  console.log(userObj);
-  const getGweets = async () => {
-    const dbGweets = await dbService.collection("gweet").get();
-
-    dbGweets.forEach((document) => {
-      const nweetObject = { ...document.data(), id: document.id };
-      setGweets((prev) => [nweetObject, ...prev]);
-    });
-  };
 
   useEffect(() => {
-    getGweets();
+    dbService.collection("gweet").onSnapshot((snapshot) => {
+      const newArray = snapshot.docs.map((document) => ({
+        id: document.id,
+        ...document.data(),
+      }));
+      setGweets(newArray);
+    });
   }, []);
 
   const onSubmit = async (event) => {
@@ -47,9 +45,11 @@ const Home = ({ userObj }) => {
       </form>
       <div>
         {gweets.map((gweet) => (
-          <div key={gweet.id}>
-            <h4>{gweet.text}</h4>
-          </div>
+          <Gweet
+            key={gweet.id}
+            gweetObj={gweet}
+            isOwner={gweet.createId === userObj.uid}
+          />
         ))}
       </div>
     </>
