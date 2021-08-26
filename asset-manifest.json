@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/gwitter/static/js/main.dbbdc760.chunk.js",
+    "main.js.map": "/gwitter/static/js/main.dbbdc760.chunk.js.map",
+    "runtime-main.js": "/gwitter/static/js/runtime-main.df18c0b1.js",
+    "runtime-main.js.map": "/gwitter/static/js/runtime-main.df18c0b1.js.map",
+    "static/js/2.5479436e.chunk.js": "/gwitter/static/js/2.5479436e.chunk.js",
+    "static/js/2.5479436e.chunk.js.map": "/gwitter/static/js/2.5479436e.chunk.js.map",
+    "index.html": "/gwitter/index.html",
+    "static/js/2.5479436e.chunk.js.LICENSE.txt": "/gwitter/static/js/2.5479436e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.df18c0b1.js",
+    "static/js/2.5479436e.chunk.js",
+    "static/js/main.dbbdc760.chunk.js"
+  ]
+}
