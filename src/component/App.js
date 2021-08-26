@@ -6,6 +6,7 @@ function App() {
   const [init, setInit] = useState(false);
 
   const [userObj, setUserObj] = useState(null);
+  console.log(userObj, "App");
 
   const refreshUser = () => {
     const user = authService.currentUser;

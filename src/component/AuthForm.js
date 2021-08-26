@@ -7,6 +7,8 @@ const AuthForm = () => {
   const [error, setError] = useState("");
   const [newAccount, setNewAccount] = useState(true);
 
+  const inputStyles = {};
+
   const onChange = (event) => {
     const {
       target: { name, value },
@@ -32,7 +34,6 @@ const AuthForm = () => {
         //log in
         data = await authService.signInWithEmailAndPassword(email, password);
       }
-      console.log(data);
     } catch (error) {
       setError(error.message);
     }
@@ -41,8 +42,9 @@ const AuthForm = () => {
   const toggleAccount = () => setNewAccount((prev) => !prev);
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="container">
         <input
+          className="authInput"
           name="email"
           type="email"
           placeholder="Email"
@@ -51,6 +53,7 @@ const AuthForm = () => {
           onChange={onChange}
         />
         <input
+          className="authInput"
           name="password"
           type="password"
           placeholder="Password"
@@ -58,10 +61,14 @@ const AuthForm = () => {
           value={password}
           onChange={onChange}
         />
-        <input type="submit" value={newAccount ? "Create Account" : "Log In"} />
-        {error}
+        <input
+          className="authInput authSubmit"
+          type="submit"
+          value={newAccount ? "Create Account" : "Log In"}
+        />
+        {error && <span className="authError">{error}</span>}
       </form>
-      <span onClick={toggleAccount}>
+      <span onClick={toggleAccount} className="authSwitch">
         {newAccount ? "Sign In" : "Create Account"}
       </span>
     </>
